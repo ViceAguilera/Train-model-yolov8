@@ -1,6 +1,7 @@
 path:  #ruta de la carpeta data
 train: images/train #ruta de las imagenes
-val: images/train #ruta de los valores de las imagenes
+val: images/val #ruta de los valores de las imagenes
+test: images/test #ruta de las imagenes de test
 
 # Clases
 names:
