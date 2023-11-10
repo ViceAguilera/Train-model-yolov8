@@ -14,7 +14,7 @@
 
 1. Se debe instalar venv
     ```bash
-    sudo apt-get install python3.9-venv
+    sudo apt-get install python3.11-venv
     ```
 
 3. Se clona el repositorio de GitHub
