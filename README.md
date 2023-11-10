@@ -29,7 +29,7 @@
   
 5. Se crea un entorno virtual
     ```bash
-    python3.9 -m venv venv
+    python3.11 -m venv venv
     ```
     
 6. Se activa el entorno virtual
@@ -102,7 +102,7 @@
 ### Ejecución 📸
 *Python*
 
-    python3.9 train.py
+    python train.py
 
 *CLI*
 
