@@ -39,7 +39,7 @@
 
 7. Se instala los requerimientos del proyecto
     ```bash
-    pip install -r requirements.txt
+    pip install ultralytics
     ```
    
 8. Se desinstala pytorch
@@ -79,7 +79,7 @@
 
 5. Se instala los requerimientos del proyecto
     ```bash
-    pip install -r requirements.txt
+    pip install ultralytics
     ```
    
 6. Se desinstala pytorch
