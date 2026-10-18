@@ -1,119 +1,79 @@
-# Codigo simplificado para entrenamientos de modelos de detección de objetos con YOLOv8
+# Entrenamiento de modelos YOLOv8
 
-## Construido con 🛠️
+Script simplificado para entrenar un modelo de detección de objetos con YOLOv8 (Ultralytics); la configuración incluida define una única clase, `license_plate` (patente vehicular).
 
-- [Python v3.11](https://www.python.org/) - Lenguaje de programación
-- [Ultralytics](https://ultralytics.com/) - Librería de modelo de detección de objetos
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat&logo=python&logoColor=white)
+![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-00FFFF?style=flat)
+![Licencia](https://img.shields.io/badge/licencia-MIT-green?style=flat)
+![Último commit](https://img.shields.io/github/last-commit/ViceAguilera/Train-model-yolov8?style=flat)
 
-## Comenzando 🚀
+## Descripción
 
-### Instalacion  🔧
+Repositorio de apoyo para entrenar un detector YOLOv8 a partir de un dataset propio en formato YOLO. Parte del modelo preentrenado `yolov8n.pt` e incluye la plantilla de configuración del dataset. Es un código base breve, pensado para reutilizar en distintos experimentos de detección.
 
-<details>
-   <summary>Linux</summary>
+## Características
 
-1. Se debe instalar venv
-    ```bash
-    sudo apt-get install python3.11-venv
-    ```
+- Entrenamiento con `yolov8n.pt`: 150 épocas, imagen de 640 px y batch de 16.
+- Configuración del dataset en `config.yaml` (clase `license_plate`).
+- Estructura de carpetas `train`, `val` y `test` lista para recibir imágenes y etiquetas.
 
-3. Se clona el repositorio de GitHub
-    ```bash
-    git clone https://github.com/ViceAguilera/Train-model-yolov8.git
-    ```
-  
-4. Se ingresa a la carpeta del proyecto
-    ```bash
-    cd Train-model-yolov8
-    ```
-  
-5. Se crea un entorno virtual
-    ```bash
-    python3.11 -m venv venv
-    ```
-    
-6. Se activa el entorno virtual
-    ```bash
-    source venv/bin/activate
-    ```
+## Tecnologías
 
-7. Se instala los requerimientos del proyecto
-    ```bash
-    pip install ultralytics
-    ```
-   
-8. Se desinstala pytorch
-    ```bash
-    pip uninstall -y torch torchvision torchaudio
-    ```
+- Python 3.11
+- [Ultralytics](https://ultralytics.com/) (YOLOv8)
+- PyTorch (se sugiere la versión con CUDA 11.8)
 
-8. Se instala CUDA Pytorch
-    ```bash
-   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-   ```
-   
-</details>
+## Requisitos
 
-<details>
-  <summary>Windows</summary>
+- Python 3.11
+- GPU NVIDIA con CUDA recomendada
+- Dataset etiquetado en formato YOLO (se recomienda [Roboflow](https://roboflow.com/))
 
-1. Se clona el repositorio de GitHub
-    ```bash
-    git clone https://github.com/ViceAguilera/Train-model-yolov8.git
-    ```
-   
-2. Se ingresa a la carpeta del proyecto
-    ```bash
-    cd Train-model-yolov8
-    ```
-   
-3. Se crea un entorno virtual
-    ```bash
-    python -m venv venv
-    ```
-   
-4. Se activa el entorno virtual
-    ```bash
-    .\venv\bin\activate
-    ```
+## Instalación
 
-5. Se instala los requerimientos del proyecto
-    ```bash
-    pip install ultralytics
-    ```
-   
-6. Se desinstala pytorch
-    ```bash
-    pip uninstall -y torch torchvision torchaudio
-    ```
+```bash
+git clone https://github.com/ViceAguilera/Train-model-yolov8.git
+cd Train-model-yolov8
+python -m venv venv
+source venv/bin/activate        # En Windows: .\venv\Scripts\activate
+pip install ultralytics
 
-7.  Se instala CUDA Pytorch
-   ```bash
-   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-   ```
+# PyTorch con CUDA 11.8
+pip uninstall -y torch torchvision torchaudio
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 
-</details>
+## Configuración
 
-### Configuración ⚙️
+1. Completa el `path` de la primera línea de `config.yaml` con la ruta de la carpeta del proyecto.
+2. Guarda en `train`, `val` y `test` una carpeta `images` con las imágenes y una carpeta `labels` con los archivos `.txt` de coordenadas de los objetos.
+3. Revisa que `val` en `config.yaml` apunte a la carpeta deseada (actualmente apunta a `train/images`).
 
-- Se debe cambiar el `path` en el archivo `config.yaml` en la linea 1, para escribir la ubicacion de la carpeta Train-model-yolov8.
-- Se debe guardar en las carpetas `test` , `train` y `val` la carpeta `images` con las imagenes y la carpeta `labels`  los archivos `.txt` con las coordenadas de los objetos a detectar. (Se recomienda ocupar Roboflow)
+## Uso
 
-### Ejecución 📸
-*Python*
+```bash
+python train.py
+```
 
-    python train.py
+Equivalente por CLI (los parámetros se pueden ajustar):
 
-*CLI*
+```bash
+yolo task=detect mode=train epochs=150 data=config.yaml model=yolov8n.pt imgsz=640 batch=16
+```
 
-    yolo task=detect mode=train epochs=150 data=config.yaml model=yolov8n.pt imgsz=640 batch=16
+## Estructura del proyecto
 
-> Este comando esta sujeto a cambios según lo que usted estime conveniente.
- 
-## Licencia 📄
+```
+train.py        # Script de entrenamiento
+config.yaml     # Configuración del dataset y clases
+yolov8n.pt      # Pesos preentrenados base
+train/ val/ test/   # Carpetas para imágenes y etiquetas (vacías en el repositorio)
+```
 
-Este proyecto está bajo el _MIT LICENSE_ - mira el archivo [LICENSE](LICENSE) para detalles
+## Licencia
 
-## Autor ✒️
+Distribuido bajo la licencia MIT. Ver [LICENSE](LICENSE).
 
-[**Vicente Aguilera Arias**](https://github.com/ViceAguilera)
+## Autor
+
+**Vicente Aguilera Arias** — [Portafolio](https://portfolio.iamsirius.cl) · [GitHub](https://github.com/ViceAguilera) · [LinkedIn](https://www.linkedin.com/in/vicenteaguilera/)
