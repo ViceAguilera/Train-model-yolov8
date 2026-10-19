@@ -4,12 +4,33 @@ Script simplificado para entrenar un modelo de detección de objetos con YOLOv8 
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat&logo=python&logoColor=white)
 ![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-00FFFF?style=flat)
-![Licencia](https://img.shields.io/badge/licencia-MIT-green?style=flat)
+![Estado](https://img.shields.io/badge/estado-terminado-blue?style=flat)
+![Licencia](https://img.shields.io/badge/licencia-MIT-blue?style=flat)
 ![Último commit](https://img.shields.io/github/last-commit/ViceAguilera/Train-model-yolov8?style=flat)
+
+<!-- Demo: agrega una captura o GIF en docs/demo.gif y descomenta la línea siguiente -->
+<!-- <p align="center"><img src="docs/demo.gif" alt="Resultados del entrenamiento YOLOv8" width="800"></p> -->
+
+## Tabla de contenidos
+
+- [Descripción](#descripción)
+- [Estado del proyecto](#estado-del-proyecto)
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Descripción
 
 Repositorio de apoyo para entrenar un detector YOLOv8 a partir de un dataset propio en formato YOLO. Parte del modelo preentrenado `yolov8n.pt` e incluye la plantilla de configuración del dataset. Es un código base breve, pensado para reutilizar en distintos experimentos de detección.
+
+## Estado del proyecto
+
+**Terminado.** Código base breve que no recibe mantenimiento activo.
 
 ## Características
 
@@ -43,7 +64,7 @@ pip uninstall -y torch torchvision torchaudio
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-## Configuración
+### Configuración
 
 1. Completa el `path` de la primera línea de `config.yaml` con la ruta de la carpeta del proyecto.
 2. Guarda en `train`, `val` y `test` una carpeta `images` con las imágenes y una carpeta `labels` con los archivos `.txt` de coordenadas de los objetos.
